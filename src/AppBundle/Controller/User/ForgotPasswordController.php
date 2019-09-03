@@ -26,7 +26,7 @@ class ForgotPasswordController extends Controller
             $user = $em->getRepository(User::class)->findOneBy(array(
                 'email' => $requestPasswordModel->getEmail(),
             ));
-            $userBusiness->generateToken($user);
+            $userBusiness->generatePasswordToken($user);
             if (null !== $user) {
                 $mailer->sendRequestPasswordMail($user);
             }
@@ -41,7 +41,7 @@ class ForgotPasswordController extends Controller
 
     public function resetAction(Request $request, User $user, Console $console, UserBusiness $userBusiness, $tokenPassword)
     {
-        if ($tokenPassword !== $user->getTokenPassword()) {
+        if ($tokenPassword !== $user->getPasswordToken()) {
             $console->add('Lien expiré : générez une nouvelle requête de réinitialisation de mot de passe', Message::TYPE_WARNING);
 
             return $this->redirectToRoute('app_user_authentication_authenticate');
@@ -52,7 +52,7 @@ class ForgotPasswordController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $userBusiness->hashPassword($user);
-            $user->setTokenPassword(null);
+            $user->setPasswordToken(null);
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
