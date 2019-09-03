@@ -11,13 +11,6 @@ use Doctrine\Common\Persistence\ObjectManager;
 
 class DataUserFixtures extends AbstractFixture implements OrderedFixtureInterface
 {
-    private $userBusiness;
-
-    public function __construct(UserBusiness $business)
-    {
-        $this->userBusiness = $business;
-    }
-
     public function load(ObjectManager $manager)
     {
         $user = new User();
@@ -29,9 +22,9 @@ class DataUserFixtures extends AbstractFixture implements OrderedFixtureInterfac
             ->setRoles(array(
                 'ROLE_ADMIN'
             ))
+            ->setPhoneToken('123456')
+            ->setPasswordToken('azerty123456789')
             ;
-        $this->userBusiness->generatePasswordToken($user, false);
-        $this->userBusiness->generatePhoneToken($user, false);
 
         $manager->persist($user);
         $manager->flush();
