@@ -1,0 +1,12 @@
+{% extends '@Message/base.html.twig' %}
+
+{% set party = contract.owner.party %}
+{% block body %}
+Pour la partie: {{ party.name }}
+Votre contrat a été accepté
+{% if not party_business.partyOver(party) %}
+Un nouveau contrat vous a été envoyé
+{% else %}
+Vous avez gagné la partie
+{% endif %}
+{% endblock body %}

@@ -1,0 +1,25 @@
+AppBundle\Entity\Player:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\PlayerRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        isGameMaster:
+            type: boolean
+    manyToOne:
+        user:
+            targetEntity: AppBundle\Entity\User
+            inversedBy: players
+        party:
+            targetEntity: AppBundle\Entity\Party
+            inversedBy: players
+    oneToMany:
+        contracts:
+            targetEntity: AppBundle\Entity\Contract
+            mappedBy: owner
+    lifecycleCallbacks: {  }

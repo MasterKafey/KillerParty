@@ -1,0 +1,16 @@
+{% set murderer_contract = contract_business.murdererContract(player) %}
+{% set executed_contract_number = 0 %}
+{% for executed_contract_number in player.contracts %}
+    {% if executed_contract_number.completed %}
+        {% set executed_contract_number = executed_contract_number + 1 %}
+    {% endif %}
+{% endfor %}
+{% embed '@Widget/Callout/Danger/base.html.twig' %}
+    {% block body %}
+        <h4>Vous êtes mort</h4>
+        Assassiné par {{ murderer_contract.owner.user.firstName }} {{ murderer_contract.owner.user.lastName }}
+        <br/>
+        <small>Vous avez tué {{ executed_contract_number }}
+            joueur{{ executed_contract_number > 1 ? 's' }}</small>
+    {% endblock body %}
+{% endembed %}

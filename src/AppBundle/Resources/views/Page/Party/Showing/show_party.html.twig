@@ -1,0 +1,46 @@
+{% extends '@Layout/Default/base.html.twig' %}
+{% set is_over = party_business.partyOver(party) %}
+{% set current_player = party_business.userPlayer(party, app.user) %}
+{% if current_player is not null %}
+    {% set is_owner = current_player.gameMaster %}
+    {% set current_contract = contract_business.currentContract(current_player) %}
+{% endif %}
+
+{% block content %}
+    {% if current_player is not null %}
+        {% if is_owner %}
+            {% if not party_business.partyOver(party) %}
+                {% include '@Widget/Party/PanelControl/Default/base.html.twig' with {'party': party, 'trials': trials} %}
+            {% endif %}
+        {% else %}
+            {% if not player_business.playerDead(current_player) and current_contract is not null and not is_over %}
+                {# Display current contract #}
+                {% include '@Widget/Contract/Default/base.html.twig' with {'contract': current_contract} %}
+            {% elseif not player_business.playerDead(current_player) and is_over %}
+                {# Player win #}
+                {% include '@Widget/Callout/Win/base.html.twig' with {'player': current_player} %}
+            {% elseif party.started %}
+                {# Player lose #}
+                {% include '@Widget/Callout/Lose/base.html.twig' with {'player': current_player} %}
+            {% endif %}
+        {% endif %}
+    {% endif %}
+
+    {% if trials is not empty and not is_over %}
+        {% for trial in trials %}
+            {% include '@Widget/Trial/Default/base.html.twig' with {'trial': trial, 'player': current_player} %}
+        {% endfor %}
+    {% endif %}
+
+    {# Display party resume #}
+    {% include '@Widget/Party/PlayerList/base.html.twig' with {'player': current_player, 'party': party, 'trial': trials[0]|default(null)} %}
+
+    {% if current_player is not null %}
+        {# Display contract submitted #}
+        {% if is_owner %}
+            {% for contract in contract_business.submittedContracts(party) %}
+                {% include '@Widget/Contract/Submitted/base.html.twig' with {'contract': contract} %}
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+{% endblock content %}

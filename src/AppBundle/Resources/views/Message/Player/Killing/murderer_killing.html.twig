@@ -1,0 +1,7 @@
+{% extends '@Message/base.html.twig' %}
+
+{% block body %}
+Dans la partie : {{ party.name }}
+Vous avez tué {{ target.user.firstName }} {{ target.user.lastName }}
+Un nouveau contrat vous a été envoyé
+{% endblock body %}

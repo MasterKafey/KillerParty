@@ -1,0 +1,26 @@
+AppBundle\Entity\KillerCard:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\KillerCardRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: 255
+        place:
+            type: string
+            length: 255
+        weapon:
+            type: string
+            length: 255
+        objective:
+            type: text
+    manyToOne:
+        type:
+            targetEntity: AppBundle\Entity\CardType
+    lifecycleCallbacks: {  }

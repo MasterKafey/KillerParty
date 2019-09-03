@@ -1,0 +1,5 @@
+app_vote_creation_create_vote:
+    path: /create_vote/{id}
+    defaults: { _controller: 'AppBundle:Vote\Creation:createVote' }
+    requirements:
+        id: \d+

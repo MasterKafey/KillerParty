@@ -1,0 +1,5 @@
+app_card_type_deletion_delete_card_type:
+    path: /delete_card_type/{id}
+    defaults: { _controller: 'AppBundle:CardType/Deletion:deleteCardType' }
+    requirements:
+        id: \d+

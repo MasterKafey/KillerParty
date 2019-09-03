@@ -1,0 +1,56 @@
+{% extends '@Layout/Default/base.html.twig' %}
+
+{% block content %}
+    {% embed '@Widget/Box/Primary/base.html.twig' %}
+        {% block body %}
+            {% if parties is not empty %}
+                {% set headers = [
+                    {'name': 'Nom', 'attributes': {'width': '25%'},},
+                    {'name': 'Commencé', 'attributes': {'width': '25%'},},
+                    {'name': 'Date de création', 'attributes': {'width': '25%'},},
+                    {'name': 'Action', 'attributes': {'width': '25%'},},
+                ] %}
+                {% set rows = [] %}
+                {% for party in parties %}
+                    {% set actions %}
+                        {% set current_player = party_business.userPlayer(party, app.user) %}
+                        <div class="btn-group">
+                        {% if current_player.gameMaster|default(false) %}
+                            <a href="{{ path('app_party_edition_edit_party', {'id': party.id}) }}"
+                               class="btn btn-warning">
+                                Modifier
+                            </a>
+                            <a href="{{ path('app_party_deletion_delete_party', {'id': party.id}) }}"
+                               class="btn btn-danger">
+                                Supprimer
+                            </a>
+                        {% endif %}
+                        {% if current_player is null and not party.started %}
+                            <a href="{{ path('app_party_joining_join_party', {'id': party.id}) }}"
+                                class="btn btn-success">
+                                Rejoindre
+                            </a>
+                        {% else %}
+                            <a href="{{ path('app_party_showing_show_party', {'id': party.id}) }}"
+                               class="btn btn-success">
+                                Afficher
+                            </a>
+                        {% endif %}
+                        </div>
+                    {% endset %}
+                    {% set rows = rows|merge([
+                        [
+                            party.name,
+                            party.started ? 'Oui' : 'Non',
+                            party.creationDate|date('d/m/y H:i'),
+                            actions
+                        ]
+                    ]) %}
+                {% endfor %}
+                {% include '@Widget/Table/Default/base.html.twig' with {'headers': headers, 'rows': rows} %}
+            {% else %}
+                Aucune partie n'a été trouvé
+            {% endif %}
+        {% endblock body %}
+    {% endembed %}
+{% endblock content %}

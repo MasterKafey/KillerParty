@@ -1,0 +1,30 @@
+ROLE_ADMIN: Administrateur
+ROLE_USER_MANAGER: Gestion utilisateurs
+ROLE_USER_MODEL_MANAGER: Gestion modèles
+ROLE_USER_CUP_MANAGER: Gestion gobelets
+ROLE_USER_TRANSACTION_MANAGER: Gestion comptabilité
+ROLE_USER_CONFIGURATION_MANAGER: Gestion configuration
+
+ROLE_USER_CREATION: Création des utilisateurs
+ROLE_USER_EDITION: Edition des utilisateurs
+ROLE_USER_DELETION: Suppression des utilisateurs
+ROLE_USER_LISTING: Affichage des utilisateurs
+ROLE_USER_BLOCKING: Bloquage des utilisateurs
+
+ROLE_USER_MODEL_CREATION: Création des modèles
+ROLE_USER_MODEL_EDITION: Edition des modèles
+ROLE_USER_MODEL_DELETION: Suppression des modèles
+ROLE_USER_MODEL_LISTING: Affichage des modèles
+
+ROLE_USER_CUP_CREATION: Création des transactions
+ROLE_USER_CUP_EDITION: Edition des transactions
+ROLE_USER_CUP_DELETION: Suppression des transactions
+ROLE_USER_CUP_LISTING: Affichage des transactions
+
+ROLE_USER_TRANSACTION_CREATION: Création des transactions
+ROLE_USER_TRANSACTION_EDITION: Edition des transactions
+ROLE_USER_TRANSACTION_DELETION: Supprimer des transactions
+ROLE_USER_TRANSACTION_LISTING: Affichage des transactions
+
+ROLE_USER_CONFIGURATION_EDITION: Modification des configurations
+ROLE_USER_CONFIGURATION_LISTING: Affichage des configurations

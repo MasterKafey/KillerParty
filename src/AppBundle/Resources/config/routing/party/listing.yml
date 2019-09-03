@@ -1,0 +1,7 @@
+app_party_listing_list_party:
+    path: /list_party/
+    defaults: { _controller: 'AppBundle:Party/Listing:listParty' }
+
+app_party_listing_list_personal_party:
+    path: /list_personal_party/
+    defaults: { _controller: 'AppBundle:Party/Listing:listPersonalParty' }

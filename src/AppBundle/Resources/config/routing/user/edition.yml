@@ -1,0 +1,11 @@
+app_user_edition_edit:
+    path: /edit/{id}
+    defaults: { _controller: 'AppBundle:User\Edition:editUser' }
+    requirements:
+        id: \d+
+    options:
+        titles:
+            main: Edition d'un utilisateur
+        breadcrumb:
+            label: Edition utilisateur
+            icon: fa fa-user

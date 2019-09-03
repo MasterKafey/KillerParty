@@ -1,0 +1,12 @@
+app_user_registration_register:
+    path: /register/
+    defaults: { _controller: 'AppBundle:User\Registration:register' }
+    options:
+        titles:
+            main: Inscription
+
+app_user_registration_define_password:
+    path: /define_password/{id}/{tokenPassword}
+    defaults: { _controller: 'AppBundle:User\Registration:definePassword'}
+    requirements:
+        id: \d+

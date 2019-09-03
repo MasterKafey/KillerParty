@@ -1,0 +1,31 @@
+AppBundle\Entity\Contract:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\ContractRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        submitted:
+            type: boolean
+        completed:
+            type: boolean
+        cancelled:
+            type: boolean
+    manyToOne:
+        owner:
+            targetEntity: AppBundle\Entity\Player
+            inversedBy: contracts
+        target:
+            targetEntity: AppBundle\Entity\Player
+        killerCard:
+            targetEntity: AppBundle\Entity\KillerCard
+    oneToOne:
+        trial:
+            targetEntity: AppBundle\Entity\Trial
+            mappedBy: contract
+            nullable: true
+    lifecycleCallbacks: {  }

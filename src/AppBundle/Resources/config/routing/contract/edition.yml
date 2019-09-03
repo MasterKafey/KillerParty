@@ -1,0 +1,5 @@
+app_contract_edition_edit_contract:
+    path:   /edit_contract/{id}
+    defaults: { _controller: 'AppBundle:Contract\Edition:editContract' }
+    requirements:
+        id: \d+

@@ -1,0 +1,11 @@
+app_card_type_edition_edit_card_type:
+    path: /edit_card_type/{id}
+    defaults: { _controller: 'AppBundle:CardType/Edition:editCardType' }
+    requirements:
+        id: \d+
+    options:
+        titles:
+            main: Création d'un type de carte
+        breadcrumb:
+            label: Création type de carte
+            icon: fa fa-layer-group

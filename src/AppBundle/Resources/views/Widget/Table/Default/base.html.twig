@@ -1,0 +1,18 @@
+<table class="table">
+    <thead>
+    <tr>
+        {% for header in headers %}
+            <th {% for name, value in header['attributes'] %} {{ name }}="{{ value }}"{% endfor %}>{{ header['name'] }}</th>
+        {% endfor %}
+    </tr>
+    </thead>
+    <tbody>
+    {% for row in rows %}
+        <tr role="row" class="{{ loop.index % 2 == 0 ? 'odd' : 'even' }}">
+            {% for cell in row %}
+                <td>{{ cell }}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

@@ -1,0 +1,44 @@
+{% extends '@Layout/Default/base.html.twig' %}
+
+{% block content %}
+    {% embed '@Widget/Box/Primary/base.html.twig' %}
+        {% block body %}
+            {% if killer_cards is not empty %}
+                {% set headers = [
+                    {'name': 'Titre', 'attributes': {'width': '20%'},},
+                    {'name': 'Place', 'attributes': {'width': '20%'},},
+                    {'name': 'Arme', 'attributes': {'width': '20%'},},
+                    {'name': 'Type', 'attributes': {'width': '20%'},},
+                    {'name': 'Action', 'attributes': {'width': '20%'},},
+                ] %}
+                {% set rows = [] %}
+                {% for killer_card in killer_cards %}
+                    {% set actions %}
+                        <div class="btn-group">
+                            <a href="{{ path('app_killer_card_edition_edit_killer_card', {'id': killer_card.id}) }}"
+                               class="btn btn-warning">
+                                Modifier
+                            </a>
+                            <a href="{{ path('app_killer_card_deletion_delete_killer_card', {'id': killer_card.id}) }}"
+                               class="btn btn-danger">
+                                Supprimer
+                            </a>
+                        </div>
+                    {% endset %}
+                    {% set rows = rows|merge([
+                        [
+                            killer_card.title,
+                            killer_card.place,
+                            killer_card.weapon,
+                            killer_card.type.name,
+                            actions
+                        ]
+                    ]) %}
+                {% endfor %}
+                {% include '@Widget/Table/Default/base.html.twig' with {'headers': headers, 'rows': rows} %}
+            {% else %}
+                Aucune carte n'a été trouvé
+            {% endif %}
+        {% endblock body %}
+    {% endembed %}
+{% endblock content %}

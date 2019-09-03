@@ -1,0 +1,51 @@
+AppBundle\Entity\User:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\UserRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        email:
+            type: string
+            length: 255
+            unique: true
+        firstName:
+            type: string
+            length: 255
+            nullable: true
+        lastName:
+            type: string
+            length: 255
+            nullable: true
+        password:
+            type: string
+            length: 255
+            nullable: true
+        roles:
+            type: array
+        blocked:
+            type: boolean
+        passwordToken:
+            type: string
+            length: 255
+            nullable: true
+        salt:
+            type: string
+            length: 255
+        phoneNumber:
+            type: string
+            length: 255
+        phoneToken:
+            type: string
+            length: 255
+            nullable: true
+    oneToMany:
+        players:
+            targetEntity: AppBundle\Entity\Player
+            mappedBy: user
+            cascade: [persist, remove]
+    lifecycleCallbacks: {  }

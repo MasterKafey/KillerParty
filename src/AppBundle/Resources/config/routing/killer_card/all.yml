@@ -1,0 +1,20 @@
+app_killer_card_creation:
+    prefix: /creation/
+    resource: "creation.yml"
+
+app_killer_card_deletion:
+    prefix: /deletion/
+    resource: "deletion.yml"
+
+app_killer_card_edition:
+    prefix: /edition/
+    resource: "edition.yml"
+
+app_killer_card_listing:
+    prefix: /listing/
+    resource: "listing.yml"
+
+app_killer_card_showing:
+    prefix: /showing/
+    resource: "showing.yml"
+

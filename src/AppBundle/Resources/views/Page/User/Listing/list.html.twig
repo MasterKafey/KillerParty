@@ -1,0 +1,62 @@
+{% extends '@Layout/Default/base.html.twig' %}
+
+{% block content %}
+    {% embed '@Widget/Box/Search/base.html.twig' with {'form': form} %}
+        {% block body %}
+            {% if users is not empty %}
+                {% set headers = [
+                    {'name': 'Prénom', 'attributes': {'width': '25%'},},
+                    {'name': 'Nom', 'attributes': {'width': '25%'},},
+                    {'name': 'Email', 'attributes': {'width': '25%'},},
+                    {'name': 'Action', 'attributes': {'width': '25%'},},
+                ] %}
+                {% set rows = [] %}
+                {% for user in users %}
+                    {% set actions %}
+                        {% if app.user != user %}
+                            <div class="btn-group">
+                                {% if is_granted('ROLE_SUPER_ADMIN') %}
+                                    <a href="{{ path('app_user_authentication_authenticate_as_user', {'id': user.id}) }}"
+                                       class="btn btn-primary">
+                                        Se connecter
+                                    </a>
+                                {% endif %}
+                                <a href="{{ path('app_user_edition_edit', {'id': user.id}) }}"
+                                   class="btn btn-warning">
+                                    Modifier
+                                </a>
+                                {% if user.password is null %}
+                                    <a href="{{ path('app_user_deletion_delete', {'id': user.id}) }}"
+                                       class="btn btn-danger">
+                                        Supprimer
+                                    </a>
+                                {% elseif not user.blocked %}
+                                    <a href="{{ path('app_user_blocking_block', {'id': user.id}) }}"
+                                       class="btn btn-danger">
+                                        Bloquer
+                                    </a>
+                                {% else %}
+                                    <a href="{{ path('app_user_blocking_unblock', {'id': user.id}) }}"
+                                       class="btn btn-danger">
+                                        Débloquer
+                                    </a>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                    {% endset %}
+                    {% set rows = rows|merge([
+                        [
+                            user.firstName,
+                            user.lastName,
+                            user.email,
+                            actions
+                        ]
+                    ]) %}
+                {% endfor %}
+                {% include '@Widget/Table/Default/base.html.twig' with {'headers': headers, 'rows': rows} %}
+            {% else %}
+                Aucun utilisateur n'a été trouvé
+            {% endif %}
+        {% endblock body %}
+    {% endembed %}
+{% endblock content %}

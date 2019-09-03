@@ -1,0 +1,39 @@
+{% block subject %}
+    Réinitilisation de mot de passe
+{% endblock subject %}
+
+{% block html %}
+    <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml"
+          xmlns:o="urn:schemas-microsoft-com:office:office">
+    {% block head_html %}
+        <head>
+            <title></title>
+            <!--[if !mso]>
+            <meta http-equiv="X-UA-Compatible" content="IE=edge"><!--<![endif]-->
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+            <meta name="viewport" content="width=device-width,initial-scale=1">
+            <!--[if mso]>
+            <xml>
+                <o:OfficeDocumentSettings>
+                    <o:AllowPNG/>
+                    <o:PixelsPerInch>96</o:PixelsPerInch>
+                </o:OfficeDocumentSettings>
+            </xml>
+            <![endif]-->
+        </head>
+    {% endblock head_html %}
+    {% block body_html %}
+        <body>
+        {% block body_text %}
+            Une demande de réinitialisation du mot de passe de votre compte a été faite,
+            <br/>
+            si vous n'êtes pas à l'origine de cette action alors ne prenez pas en compte ce mail
+            <br/>
+            <br/>
+            Sinon pour continuer la procédure, cliquez
+            <a href="{{ absolute_url(path('app_user_forgot_password_reset', {'id': user.id, 'tokenPassword': user.tokenPassword})) }}">ici</a>.
+        {% endblock body_text %}
+        </body>
+    {% endblock body_html %}
+    </html>
+{% endblock html %}

@@ -1,0 +1,58 @@
+{% embed '@Widget/Box/Danger/base.html.twig' %}
+    {% set current_player = contract.owner %}
+    {% block header %}
+        <div class="row">
+            <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <small>Contrat en cours n°{{ (current_player.contracts|length) }}</small>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <h3 class="text-center">
+                    Executant: {{ contract.owner.user.firstName ~ ' ' ~ contract.target.user.lastName }}
+                </h3>
+            </div>
+            <div class="col col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <h3 class="text-center">
+                    Cible: {{ contract.target.user.firstName ~ ' ' ~ contract.target.user.lastName }}
+                </h3>
+            </div>
+        </div>
+    {% endblock header %}
+
+    {% block body %}
+        {% embed '@Widget/Callout/Info/base.html.twig' %}
+            {% block body %}
+                <h4>Zone d'action</h4>
+                {{ contract.killerCard.place }}
+            {% endblock body %}
+        {% endembed %}
+        {% embed '@Widget/Callout/Danger/base.html.twig' %}
+            {% block body %}
+                <h4>L'arme</h4>
+                {{ contract.killerCard.weapon }}
+            {% endblock body %}
+        {% endembed %}
+        {% embed '@Widget/Callout/Success/base.html.twig' %}
+            {% block body %}
+                <h4>Objectif</h4>
+                {{ contract.killerCard.objective }}
+            {% endblock body %}
+        {% endembed %}
+    {% endblock body %}
+
+    {% block footer %}
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <a href="{{ path('app_contract_submitting_completed_contract', {'id': contract.id}) }}" class="btn btn-success btn-block btn-flat">
+                    Valider
+                </a>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <a href="{{ path('app_contract_submitting_unsubmit_contract', {'id': contract.id}) }}" class="btn btn-danger btn-block btn-flat">
+                    Annuler
+                </a>
+            </div>
+        </div>
+    {% endblock footer %}
+{% endembed %}

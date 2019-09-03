@@ -1,0 +1,19 @@
+{% extends '@Layout/Default/base.html.twig' %}
+
+{% block content %}
+    {{ form_start(form) }}
+    {% embed '@Widget/Box/Primary/base.html.twig' %}
+        {% block body %}
+            {{ form_row(form.email, {'label': 'Adresse email'}) }}
+            {{ form_row(form.firstName, {'label': 'Prénom'}) }}
+            {{ form_row(form.lastName, {'label': 'Nom'}) }}
+            {{ form_row(form.userModel, {'label': 'Modèle d\'employé'}) }}
+            {{ form_rest(form) }}
+        {% endblock body %}
+
+        {% block footer %}
+            <button type="submit" class="btn btn-primary pull-right">Sauvegarder l'utilisateur</button>
+        {% endblock footer %}
+    {% endembed %}
+    {{ form_end(form) }}
+{% endblock content %}

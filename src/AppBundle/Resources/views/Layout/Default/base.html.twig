@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+{% block html_html %}
+<html>
+{% block html %}
+    {% block head_html %}
+        <head>
+            {% block head %}
+                {% block title_html %}
+                    <title>Killer Party
+                        | {% block title %}{{ title_business.titles['main']|default('') }}{% endblock title %}</title>
+                {% endblock title_html %}
+                {% include '@Layout/Default/stylesheets.html.twig' %}
+                {% include '@Layout/Default/javascripts.html.twig' %}
+            {% endblock head %}
+        </head>
+    {% endblock head_html %}
+    {% block body_html %}
+        <body class="sidebar-mini skin-red">
+        <div class="wrapper">
+            {% embed '@Widget/Header/Default/base.html.twig' with {'logo_link': path('app_home')} %}
+                {% block logo_mini %}
+                    <b>BT</b>P
+                {% endblock logo_mini %}
+                {% block logo %}
+                    <b>BT</b>Planning
+                {% endblock logo %}
+            {% endembed %}
+            {% set items = nav_bar_business.navBar('default') %}
+            {% include '@Widget/NavBar/Default/base.html.twig' with {'items': items} %}
+            <div class="content-wrapper">
+                {% block body %}
+                    <section class="content-header">
+                        {% block header %}
+                            {% block header_title %}
+                                {% set titles = title_business.titles %}
+                                {% if titles is not null %}
+                                    <h1>
+                                        {{ titles['main'] }}
+                                        {% if titles['sub'] is defined %}
+                                            <small>{{ titles['sub'] }}</small>
+                                        {% endif %}
+                                    </h1>
+                                {% endif %}
+                            {% endblock header_title %}
+                            {% set items = breadcrumb_business.breadcrumb() %}
+                            {% include '@Widget/Breadcrumb/Default/base.html.twig' with {'items': items} %}
+                        {% endblock header %}
+                    </section>
+                    <section class="content">
+                        {% block content %}
+
+                        {% endblock content %}
+                    </section>
+                {% endblock body %}
+            </div>
+            {% include '@Widget/Footer/Default/base.html.twig' %}
+        </div>
+        {% include '@Widget/Alert/base.html.twig' %}
+        {% block scripts %}{% endblock scripts %}
+        </body>
+    {% endblock body_html %}
+{% endblock html %}
+</html>
+{% endblock html_html %}

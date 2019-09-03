@@ -1,0 +1,10 @@
+{% extends '@Layout/Default/base.html.twig' %}
+
+{% block body_html %}
+    <body class="hold-transition login-page">
+    {% block body %}
+
+    {% endblock body %}
+    {% include '@Widget/Alert/base.html.twig' %}
+    </body>
+{% endblock body_html %}

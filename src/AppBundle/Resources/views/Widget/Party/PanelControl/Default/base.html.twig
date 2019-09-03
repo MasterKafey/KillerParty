@@ -1,0 +1,30 @@
+{% embed '@Widget/Box/Danger/base.html.twig' %}
+    {% block header %}
+        <h3>Panneau de contrôle du Game Master</h3>
+    {% endblock header %}
+
+    {% block body %}
+        <a href="{{ path('app_player_killing_kill_player_by_game_master', {'id': party.id}) }}"
+           class="btn btn-danger btn-block btn-flat" {{ not party.started ? 'disabled' }}>
+            Tuer un joueur
+        </a>
+        {% if trials is empty %}
+            <a href="{{ path('app_trial_creation_create_trial', {'id': party.id}) }}" class="btn btn-primary btn-block btn-flat" {{ not party.started ? 'disabled' }}>
+                Programmer un tribunal
+            </a>
+        {% else %}
+            <a href="{{ path('app_trial_completing_completed_trial', {'id': trials[0].id}) }}" class="btn btn-primary btn-block btn-flat" {{ not party.started ? 'disabled' }}>
+                Terminé le tribunal
+            </a>
+        {% endif %}
+    {% endblock body %}
+
+    {% block footer %}
+        {% if not party.started %}
+            <a href="{{ path('app_party_starting_start_party', {'id': party.id}) }}"
+               class="btn btn-success btn-block btn-flat" {{ party.started ? 'disabled' }}>
+                Commencer la partie
+            </a>
+        {% endif %}
+    {% endblock footer %}
+{% endembed %}

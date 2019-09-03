@@ -1,0 +1,6 @@
+{% extends '@Message/base.html.twig' %}
+
+{% block body %}
+Pour la partie: {{ contract.owner.party.name }}
+Un contrat a été soumis pour vérification par: {{ contract.owner.user.firstName }} {{ contract.owner.user.lastName }}
+{% endblock body %}

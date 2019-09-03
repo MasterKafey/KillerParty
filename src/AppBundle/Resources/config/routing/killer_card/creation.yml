@@ -1,0 +1,3 @@
+app_killer_card_creation_create_killer_card:
+    path: /create_killer_card/
+    defaults: { _controller: 'AppBundle:KillerCard/Creation:createKillerCard' }

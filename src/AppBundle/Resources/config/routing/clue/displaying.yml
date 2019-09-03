@@ -1,0 +1,7 @@
+app_clue_displaying_display_clue:
+    path: /display_clue/{id}
+    defaults: { _controller: 'AppBundle:Clue\Displaying:displayClue' }
+
+app_clue_displaying_hide_clue:
+    path: /hide_clue/{id}
+    defaults: { _controller: 'AppBundle:Clue\Displaying:hideClue' }

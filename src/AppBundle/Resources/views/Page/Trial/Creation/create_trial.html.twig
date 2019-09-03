@@ -1,0 +1,17 @@
+{% extends '@Layout/Default/base.html.twig' %}
+
+{% block content %}
+
+    {{ form_start(form) }}
+    {% embed '@Widget/Box/Primary/base.html.twig' %}
+        {% block body %}
+            {{ form_row(form.contract, {'label': 'Contrat'}) }}
+            {{ form_rest(form) }}
+        {% endblock body %}
+
+        {% block footer %}
+            <button type="submit" class="btn btn-primary pull-right">Créer le procès</button>
+        {% endblock footer %}
+    {% endembed %}
+    {{ form_end(form) }}
+{% endblock content %}

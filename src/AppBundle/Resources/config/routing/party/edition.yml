@@ -1,0 +1,5 @@
+app_party_edition_edit_party:
+    path: /edit_party/{id}
+    defaults: { _controller: 'AppBundle:Party/Edition:editParty' }
+    requirements:
+        id: \d+

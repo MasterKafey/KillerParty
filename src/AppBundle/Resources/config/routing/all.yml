@@ -1,0 +1,46 @@
+app_home:
+    path: /
+    defaults: { _controller: 'AppBundle:Home:index' }
+    options:
+        titles:
+            main: Accueil
+            sub: Page principale
+        breadcrumb:
+            icon: fa fa-home
+            label: Accueil
+
+app_user:
+    prefix: /user/
+    resource: 'user/all.yml'
+
+app_killer_card:
+    prefix: /killer_card/
+    resource: "killer_card/all.yml"
+
+app_card_type:
+    prefix: /card_type/
+    resource: "card_type/all.yml"
+
+app_party:
+    prefix: /party/
+    resource: "party/all.yml"
+
+app_player:
+    prefix: /player/
+    resource: 'player/all.yml'
+
+app_contract:
+    prefix: /contract/
+    resource: 'contract/all.yml'
+
+app_trial:
+    prefix: /trial/
+    resource: 'trial/all.yml'
+
+app_clue:
+    prefix: /clue/
+    resource: 'clue/all.yml'
+
+app_vote:
+    prefix: /vote/
+    resource: 'vote/all.yml'

@@ -1,0 +1,3 @@
+app_party_creation_create_party:
+    path: /create_party/
+    defaults: { _controller: 'AppBundle:Party/Creation:createParty' }

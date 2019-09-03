@@ -1,0 +1,7 @@
+app_trial_completing:
+    prefix: /completing/
+    resource: 'completing.yml'
+
+app_trial_creation:
+    prefix: /creation/
+    resource: 'creation.yml'

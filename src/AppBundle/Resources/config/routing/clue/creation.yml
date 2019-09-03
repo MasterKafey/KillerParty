@@ -1,0 +1,3 @@
+app_clue_creation_create_clue:
+    path: /create_clue/{id}
+    defaults: { _controller: 'AppBundle:Clue\Creation:createClue' }

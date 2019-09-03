@@ -1,0 +1,8 @@
+parameters:
+    version: ALPHA 1.0
+    author:
+        name: Dyosis
+        link: https://dyosis.com/
+    mailer_params:
+        sender_address: 'Killer-Party@dyosis.com'
+        sender_name: 'Killer Party'

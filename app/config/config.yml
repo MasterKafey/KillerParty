@@ -2,15 +2,16 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
+    - { resource: settings.yml }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: en
+    locale: fr_FR
 
 framework:
     #esi: ~
-    #translator: { fallbacks: ['%locale%'] }
+    translator: { fallbacks: ['%locale%'] }
     secret: '%secret%'
     router:
         resource: '%kernel.project_dir%/app/config/routing.yml'
@@ -35,6 +36,25 @@ framework:
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
+    form_themes:
+    - 'bootstrap_3_layout.html.twig'
+    paths:
+        '%kernel.project_dir%/src/AppBundle/Resources/views/Layout': Layout
+        '%kernel.project_dir%/src/AppBundle/Resources/views/Mail': Mail
+        '%kernel.project_dir%/src/AppBundle/Resources/views/Message': Message
+        '%kernel.project_dir%/src/AppBundle/Resources/views/Page': Page
+        '%kernel.project_dir%/src/AppBundle/Resources/views/Widget': Widget
+    globals:
+        nav_bar_business: '@AppBundle\Service\Business\NavBarBusiness'
+        breadcrumb_business: '@AppBundle\Service\Business\BreadcrumbBusiness'
+        title_business: '@AppBundle\Service\Business\TitleBusiness'
+        console_util: '@AppBundle\Service\Util\Console\Console'
+        role_business: '@AppBundle\Service\Business\RoleBusiness'
+        party_business: '@AppBundle\Service\Business\PartyBusiness'
+        player_business: '@AppBundle\Service\Business\PlayerBusiness'
+        contract_business: '@AppBundle\Service\Business\ContractBusiness'
+        version: '%version%'
+        author: '%author%'
 
 # Doctrine Configuration
 doctrine:
@@ -64,8 +84,13 @@ swiftmailer:
     host: '%mailer_host%'
     username: '%mailer_user%'
     password: '%mailer_password%'
+    auth_mode: '%mailer_auth_mode%'
+    port: '%mailer_port%'
     spool: { type: memory }
 
 sensio_framework_extra:
    router:
         annotations: false
+
+webpack_encore:
+    output_path: '%kernel.project_dir%/web/build/'

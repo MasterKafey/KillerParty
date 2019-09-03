@@ -1,0 +1,6 @@
+{% extends '@Message/base.html.twig' %}
+
+{% block body %}
+Pour la partie: {{ trial.contract.owner.party.name }}
+Un procès est en cours pour le meurtre de {{ trial.contract.target.user.firstName }} {{ trial.contract.target.user.lastName }}
+{% endblock body %}

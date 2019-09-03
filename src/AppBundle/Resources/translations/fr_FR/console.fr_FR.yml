@@ -1,0 +1,8 @@
+Bad credentials.: "Identifiants invalides"
+Account not enable yet: "Ce compte n'est pas encore activé"
+Account blocked: "Ce compte à été bloqué"
+
+user:
+    registration:
+        email_sent: Un email de confirmation vous à été envoyé
+        account_enabled: Votre compte été activé

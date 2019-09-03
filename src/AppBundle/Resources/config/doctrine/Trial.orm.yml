@@ -1,0 +1,25 @@
+AppBundle\Entity\Trial:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\TrialRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        completed:
+            type: boolean
+    oneToOne:
+        contract:
+            targetEntity: AppBundle\Entity\Contract
+            inversedBy: trial
+    oneToMany:
+        clues:
+            targetEntity: AppBundle\Entity\Clue
+            mappedBy: trial
+        votes:
+            targetEntity: AppBundle\Entity\Vote
+            mappedBy: trial
+    lifecycleCallbacks: {  }

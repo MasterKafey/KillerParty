@@ -1,0 +1,3 @@
+app_player_killing:
+    prefix: /killing/
+    resource: 'killing.yml'

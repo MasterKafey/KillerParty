@@ -1,0 +1,3 @@
+app_card_type_listing_list_card_type:
+    path: /list_card_type/
+    defaults: { _controller: 'AppBundle:CardType/Listing:listCardType' }

@@ -1,0 +1,22 @@
+AppBundle\Entity\Clue:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\ClueRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        text:
+            type: text
+        displayed:
+            type: boolean
+    manyToOne:
+        trial:
+            targetEntity: AppBundle\Entity\Trial
+            inversedBy: clues
+        creator:
+            targetEntity: AppBundle\Entity\Player
+    lifecycleCallbacks: {  }

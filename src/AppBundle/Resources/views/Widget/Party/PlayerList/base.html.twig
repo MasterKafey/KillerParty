@@ -1,0 +1,74 @@
+{% set is_owner = player.gameMaster|default(false) %}
+{% set party_over = party_business.partyOver(party) %}
+{% embed '@Widget/Box/Primary/base.html.twig' %}
+    {% block header %}
+        <h3>{{ party.name }}
+            <small>{{ not party.started ? 'Partie en préparation' : (party_over ? 'Partie terminé' : 'Partie en cours') }}
+                ({{ party.creationDate|date('d/m/y H:i') }}
+                ) {{ party_over ? '- (' ~ party.endingDate|date('d/m/y H:i') ~ ')' }}
+            </small>
+        </h3>
+    {% endblock header %}
+
+    {% block body %}
+        {% set headers = [
+            {'name': 'Nom complet', 'attributes': {'width': '20%'}},
+            {'name': 'Status', 'attributes': {'width': '20%'}},
+            {'name': 'Mort', 'attributes': {'width': '20%'}},
+        ] %}
+        {% if trial is not null %}
+            {% set headers = headers|merge([
+                {'name': 'Nombre de vôte', 'attributes': {'width': '20%'}}
+            ]) %}
+        {% endif %}
+        {% if is_owner %}
+            {% set headers = headers|merge([
+                {'name': 'Action', 'attributes': {'width': '20%'}}
+            ]) %}
+        {% endif %}
+
+        {% set rows = [] %}
+        {% for player in party.players %}
+            {% set actions %}
+                {% if not party_over and party.started %}
+                    <div class="btn-group">
+                        {% if is_owner and player != current_player and not player_business.playerDead(player) %}
+                            <a href="{{ path('app_contract_edition_edit_contract', {'id': contract_business.currentContract(player).id}) }}"
+                               class="btn btn-warning" {{ not party.started ? 'disabled' }}>
+                                Modifier
+                            </a>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endset %}
+            {% set is_dead = player_business.playerDead(player) %}
+            {% set row = [
+                player.user.firstName  ~ ' ' ~ player.user.lastName,
+                player.gameMaster ? 'Maitre du jeu' : 'Joueur',
+                is_dead ? 'Oui' : 'Non',
+            ] %}
+            {% if trial is not null %}
+                {% if is_dead %}
+                    {% set row = row|merge(['']) %}
+                {% else %}
+                    {% set vote_number = 0 %}
+                    {% for vote in trial.votes %}
+                        {% if vote.target == player %}
+                            {% set vote_number = vote_number + 1 %}
+                        {% endif %}
+                    {% endfor %}
+                    {% set row = row|merge([
+                        vote_number
+                    ]) %}
+                {% endif %}
+            {% endif %}
+            {% if is_owner %}
+                {% set row = row|merge([
+                    actions
+                ]) %}
+            {% endif %}
+            {% set rows = rows|merge([row]) %}
+        {% endfor %}
+        {% include '@Widget/Table/Default/base.html.twig' %}
+    {% endblock body %}
+{% endembed %}

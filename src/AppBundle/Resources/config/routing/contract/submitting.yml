@@ -1,0 +1,17 @@
+app_contract_submitting_submit_contract:
+    path:   /submit_contract/{id}
+    defaults: { _controller: 'AppBundle:Contract\Submitting:submitContract' }
+    requirements:
+        id: \d+
+
+app_contract_submitting_unsubmit_contract:
+    path:   /unsubmit_contract/{id}
+    defaults: { _controller: 'AppBundle:Contract\Submitting:unsubmitContract' }
+    requirements:
+        id: \d+
+
+app_contract_submitting_completed_contract:
+    path:   /completed_contract/{id}
+    defaults: { _controller: 'AppBundle:Contract\Submitting:completedContract' }
+    requirements:
+        id: \d+

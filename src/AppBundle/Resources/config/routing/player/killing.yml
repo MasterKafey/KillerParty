@@ -1,0 +1,11 @@
+app_player_killing_kill_player_by_player:
+    path:   /kill_player_by_murderer/{id}
+    defaults: { _controller: 'AppBundle:Player\Killer:killPlayerByPlayer'}
+    requirements:
+        id: \d+
+
+app_player_killing_kill_player_by_game_master:
+    path:   /kill_player_by_game_master/{id}
+    defaults: { _controller: 'AppBundle:Player\Killer:killPlayerByGameMaster'}
+    requirements:
+        id: \d+

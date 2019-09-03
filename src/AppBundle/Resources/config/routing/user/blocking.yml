@@ -1,0 +1,11 @@
+app_user_blocking_block:
+    path: /block/{id}
+    defaults: { _controller: 'AppBundle:User\Blocking:blockUser' }
+    requirements:
+        id: \d+
+
+app_user_blocking_unblock:
+    path: /unblock/{id}
+    defaults: { _controller: 'AppBundle:User\Blocking:unblockUser' }
+    requirements:
+        id: \d+

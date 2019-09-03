@@ -1,0 +1,14 @@
+{% set murderer_contract = contract_business.murdererContract(player) %}
+{% set executed_contract_number = 0 %}
+{% for executed_contract in current_player.contracts %}
+    {% if executed_contract.completed %}
+        {% set executed_contract_number = executed_contract_number + 1 %}
+    {% endif %}
+{% endfor %}
+{% embed '@Widget/Callout/Success/base.html.twig' %}
+    {% block body %}
+        <h4>Vous avez gagné</h4>
+        <small>Vous avez tué {{ executed_contract_number }}
+            joueur{{ executed_contract_number > 1 ? 's' }}</small>
+    {% endblock body %}
+{% endembed %}

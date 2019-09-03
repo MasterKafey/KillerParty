@@ -1,0 +1,27 @@
+app_party_creation:
+    prefix: /creation/
+    resource: "creation.yml"
+
+app_party_deletion:
+    prefix: /deletion/
+    resource: "deletion.yml"
+
+app_party_edition:
+    prefix: /edition/
+    resource: "edition.yml"
+
+app_party_listing:
+    prefix: /listing/
+    resource: "listing.yml"
+
+app_party_showing:
+    prefix: /showing/
+    resource: "showing.yml"
+
+app_party_joining:
+    prefix: /joining/
+    resource: 'joining.yml'
+
+app_party_starting:
+    prefix: /starting/
+    resource: 'starting.yml'

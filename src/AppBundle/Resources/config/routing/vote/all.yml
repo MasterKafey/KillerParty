@@ -1,0 +1,3 @@
+app_vote_creation:
+    prefix: /creation/
+    resource: "creation.yml"

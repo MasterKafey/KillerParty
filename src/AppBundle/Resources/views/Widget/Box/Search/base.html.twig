@@ -1,0 +1,32 @@
+{% set content %}{% block body %}{% endblock body %}{% endset %}
+{{ form_start(form) }}
+{% embed'@Widget/Box/Success/base.html.twig' %}
+    {% block header %}
+        <div class="row">
+            <div class="col-md-6 col-xs-12">
+                <div class="input-group">
+                    {{ form_widget(form.text) }}
+                    <span class="input-group-btn">
+                        <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-6 col-xs-12">
+                {{ form_widget(form.max, {'attr': {'placeholder': 'Nombre maximum de résultat'}}) }}
+            </div>
+        </div>
+    {% endblock header %}
+    {% block body %}
+        {{ content }}
+    {% endblock body %}
+    {% block footer %}
+        <div class="btn-group">
+            {% for button in form.children %}
+                {{ form_widget(button) }}
+            {% endfor %}
+        </div>
+    {% endblock footer %}
+{% endembed %}
+{{ form_end(form) }}

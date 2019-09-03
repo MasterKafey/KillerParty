@@ -1,0 +1,41 @@
+- name: Accueil
+  route: app_home
+  icon: fa fa-home
+
+- name: Utilisateurs
+  icon: fa fa-users
+  route: app_user_listing_list
+  roles: [ROLE_ADMIN]
+
+- name: Cartes
+  icon: fa fa-file-invoice
+  sub_items:
+  - name: Création
+    icon: fa fa-plus
+    route: app_killer_card_creation_create_killer_card
+  - name: Liste
+    icon: fa fa-list
+    route: app_killer_card_listing_list_killer_card
+
+- name: Type de carte
+  icon: fa fa-layer-group
+  sub_items:
+  - name: Création
+    icon: fa fa-plus
+    route: app_card_type_creation_create_card_type
+  - name: Liste
+    icon: fa fa-list
+    route: app_card_type_listing_list_card_type
+
+- name: Parties
+  icon: fa fa-dice
+  sub_items:
+  - name: Création
+    icon: fa fa-plus
+    route: app_party_creation_create_party
+  - name: Liste personnelle
+    icon: fa fa-list
+    route: app_party_listing_list_personal_party
+  - name: Liste global
+    icon: fa fa-list
+    route: app_party_listing_list_party

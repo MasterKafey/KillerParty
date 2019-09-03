@@ -1,0 +1,5 @@
+app_party_deletion_delete_party:
+    path: /delete_party/{id}
+    defaults: { _controller: 'AppBundle:Party/Deletion:deleteParty' }
+    requirements:
+        id: \d+

@@ -1,0 +1,33 @@
+{% set has_child = sub_items is defined and sub_items is not empty %}
+{% set current_route = app.request.attributes.get('_route') %}
+{% set main_is_active = current_route == route|default('#') %}
+{% if not main_is_active %}
+    {% for sub_item in sub_items|default([]) %}
+        {% if sub_item['route'] == current_route %}
+            {% set main_is_active = true %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+<li class="{{ has_child ? 'treeview' }}{{ main_is_active ? ' active' }}">
+    <a href="{{ has_child ? '#' : path(route) }}">
+        {% include '@Widget/Icon/FontAwesome/base.html.twig' with {'class': icon} %}
+        <span>{{ name }}</span>
+        {% if has_child %}
+            <span class="pull-right-container">
+                {% include '@Widget/Icon/FontAwesome/base.html.twig' with {'class': 'fa fa-angle-left pull-right'} %}
+            </span>
+        {% endif %}
+        {% if has_child %}
+            <ul class="treeview-menu">
+                {% for sub_item in sub_items %}
+                    <li{% if sub_item['route'] == current_route %} class="active"{% endif %}>
+                        <a href="{{ path(sub_item['route']) }}">
+                            {% include '@Widget/Icon/FontAwesome/base.html.twig' with {'class': 'fa fa-arrow-alt-circle-right pull-left'} %} {{ sub_item['name'] }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </a>
+</li>

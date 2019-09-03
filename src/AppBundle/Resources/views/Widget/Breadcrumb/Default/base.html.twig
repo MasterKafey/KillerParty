@@ -1,0 +1,14 @@
+{% if items is defined %}
+    <ol class="breadcrumb">
+        {% for item in items %}
+            <li>
+                <a href="{{ item['uri'] }}">
+                    {% if item['icon'] is defined %}
+                        <i class="{{ item['icon'] }}"></i>
+                    {% endif %}
+                    {{ item['label'] }}
+                </a>
+            </li>
+        {% endfor %}
+    </ol>
+{% endif %}

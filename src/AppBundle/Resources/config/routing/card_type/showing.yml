@@ -1,0 +1,5 @@
+app_card_type_showing_show_card_type:
+    path: /show_card_type/{id}
+    defaults: { _controller: 'AppBundle:CardType/Showing:showCardType' }
+    requirements:
+        id: \d+

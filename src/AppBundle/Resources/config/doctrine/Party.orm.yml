@@ -1,0 +1,31 @@
+AppBundle\Entity\Party:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\PartyRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+            unique: true
+        creationDate:
+            type: datetime
+        endingDate:
+            type: datetime
+            nullable: true
+        started:
+            type: boolean
+    manyToMany:
+        cardTypes:
+            targetEntity: AppBundle\Entity\CardType
+    oneToMany:
+        players:
+            targetEntity: AppBundle\Entity\Player
+            cascade: [persist, remove]
+            mappedBy: party
+    lifecycleCallbacks: {  }

@@ -1,0 +1,5 @@
+app_killer_card_edition_edit_killer_card:
+    path: /edit_killer_card/{id}
+    defaults: { _controller: 'AppBundle:KillerCard/Edition:editKillerCard' }
+    requirements:
+        id: \d+

@@ -1,0 +1,20 @@
+app_card_type_creation:
+    prefix: /creation/
+    resource: "creation.yml"
+
+app_card_type_deletion:
+    prefix: /deletion/
+    resource: "deletion.yml"
+
+app_card_type_edition:
+    prefix: /edition/
+    resource: "edition.yml"
+
+app_card_type_listing:
+    prefix: /listing/
+    resource: "listing.yml"
+
+app_card_type_showing:
+    prefix: /showing/
+    resource: "showing.yml"
+

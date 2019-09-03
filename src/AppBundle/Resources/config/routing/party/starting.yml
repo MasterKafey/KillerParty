@@ -1,0 +1,5 @@
+app_party_starting_start_party:
+    path: /start_party/{id}
+    defaults: { _controller: 'AppBundle:Party\Starting:startParty' }
+    requirements:
+        id: \d+

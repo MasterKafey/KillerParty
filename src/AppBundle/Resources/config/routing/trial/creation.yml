@@ -1,0 +1,5 @@
+app_trial_creation_create_trial:
+    path: /create_trial/{id}
+    defaults: { _controller: 'AppBundle:Trial\Creation:createTrial' }
+    requirements:
+        id: \d+

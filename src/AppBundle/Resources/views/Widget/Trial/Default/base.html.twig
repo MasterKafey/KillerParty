@@ -1,0 +1,54 @@
+<div class="row">
+    {% if not player_business.playerDead(player) %}
+        <div class="col col-lg-1 col-md-2 col-sm-2 col-xs-2 text-left">
+            <a class="btn btn-app" href="{{ path('app_clue_creation_create_clue', {'id': trial.id}) }}">
+                <i class="fa fa-plus"></i> Indice
+            </a>
+        </div>
+        {% if not player.gameMaster %}
+            <div class="col col-lg-1 col-md-2 col-sm-2 col-xs-2 text-left">
+                <a class="btn btn-app" href="{{ path('app_vote_creation_create_vote', {'id': trial.id}) }}">
+                    <i class="fa fa-user"></i> Voter
+                </a>
+            </div>
+        {% endif %}
+    {% endif %}
+    <div class="col {{ player.gameMaster ? 'col-lg-11 col-md-10 col-sm-10 col-xs-10' : 'col-lg-10 col-md-8 col-sm-8 col-xs-8' }}">
+        {% embed '@Widget/Callout/Warning/base.html.twig' %}
+            {% block body %}
+                <h4>Procés en cours pour le meurtre
+                    de {{ trial.contract.target.user.firstName }} {{ trial.contract.target.user.lastName }}</h4>
+            {% endblock body %}
+        {% endembed %}
+    </div>
+</div>
+
+<div class="row">
+    {% for clue in trial.clues if clue.displayed or player.gameMaster %}
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            {% embed '@Widget/Box/Warning/base.html.twig' %}
+                {% block header %}
+                    Indice de {{ clue.creator.user.firstName }} {{ clue.creator.user.lastName }}
+                {% endblock header %}
+
+                {% block body %}
+                    {{ clue.text }}
+                {% endblock body %}
+
+                {% block footer %}
+                    {% if party_business.userPlayer(trial.contract.owner.party, app.user).gameMaster %}
+                        {% if not clue.displayed %}
+                            <a href="{{ path('app_clue_displaying_display_clue', {'id': clue.id}) }}" class="btn btn-success btn-block">
+                                Afficher cette indice
+                            </a>
+                        {% else %}
+                            <a href="{{ path('app_clue_displaying_hide_clue', {'id': clue.id}) }}" class="btn btn-warning btn-block">
+                                Cacher cette indice
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endblock footer %}
+            {% endembed %}
+        </div>
+    {% endfor %}
+</div>

@@ -1,0 +1,14 @@
+<div class="box {{ class|default('') }}">
+    <div class="box-header with-border">
+        {% block header %}
+        {% endblock header %}
+    </div>
+    <div class="box-body">
+        {% block body %}
+        {% endblock body %}
+    </div>
+    <div class="box-footer">
+        {% block footer %}
+        {% endblock footer %}
+    </div>
+</div>

@@ -1,0 +1,5 @@
+app_party_joining_join_party:
+    path: /join_party/{id}
+    defaults: { _controller: 'AppBundle:Party\Joining:joinParty' }
+    requirements:
+        id: \d+

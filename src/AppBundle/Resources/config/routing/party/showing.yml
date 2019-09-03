@@ -1,0 +1,5 @@
+app_party_showing_show_party:
+    path: /show_party/{id}
+    defaults: { _controller: 'AppBundle:Party/Showing:showParty' }
+    requirements:
+        id: \d+

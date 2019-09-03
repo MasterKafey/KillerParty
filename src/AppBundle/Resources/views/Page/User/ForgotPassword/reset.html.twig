@@ -1,0 +1,27 @@
+{% extends '@Layout/Base/base.html.twig' %}
+
+{% block body %}
+    <div class="login-box">
+        <div class="login-logo">
+            <b>Killer</b> Party
+        </div>
+        <div class="login-box-body">
+            <p class="login-box-msg">Réinitialisez votre mot de passe</p>
+            {{ form_start(form) }}
+            <div class="form-group has-feedback">
+                {{ form_widget(form.plainPassword.first, {'attr': {'placeholder': 'Votre mot de passe'}}) }}
+                <span class="fa fa-key form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                {{ form_widget(form.plainPassword.second, {'attr': {'placeholder': 'Confirmer votre mot de passe'}}) }}
+                <span class="fa fa-key form-control-feedback"></span>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">Confirmer</button>
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock body %}

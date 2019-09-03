@@ -1,0 +1,38 @@
+{% extends '@Layout/Default/base.html.twig' %}
+
+{% block content %}
+    {% embed '@Widget/Box/Primary/base.html.twig' %}
+        {% block body %}
+            {% if card_types is not empty %}
+                {% set headers = [
+                    {'name': 'Nom', 'attributes': {'width': '60%'},},
+                    {'name': 'Action', 'attributes': {'width': '40%'},},
+                ] %}
+                {% set rows = [] %}
+                {% for card_type in card_types %}
+                    {% set actions %}
+                        <div class="btn-group">
+                            <a href="{{ path('app_card_type_edition_edit_card_type', {'id': card_type.id}) }}"
+                               class="btn btn-warning">
+                                Modifier
+                            </a>
+                            <a href="{{ path('app_card_type_deletion_delete_card_type', {'id': card_type.id}) }}"
+                               class="btn btn-danger">
+                                Supprimer
+                            </a>
+                        </div>
+                    {% endset %}
+                    {% set rows = rows|merge([
+                        [
+                            card_type.name,
+                            actions
+                        ]
+                    ]) %}
+                {% endfor %}
+                {% include '@Widget/Table/Default/base.html.twig' with {'headers': headers, 'rows': rows} %}
+            {% else %}
+                Aucun type de carte n'a été trouvé
+            {% endif %}
+        {% endblock body %}
+    {% endembed %}
+{% endblock content %}

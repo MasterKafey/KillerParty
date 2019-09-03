@@ -1,0 +1,6 @@
+{% extends '@Message/base.html.twig' %}
+
+{% block body %}
+Dans la partie : {{ party.name }}
+Vous avez été tué par {{ murderer.user.firstName }} {{ murderer.user.lastName }}
+{% endblock body %}

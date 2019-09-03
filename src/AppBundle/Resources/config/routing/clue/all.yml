@@ -1,0 +1,7 @@
+app_clue_creation:
+    prefix: /creation/
+    resource: "creation.yml"
+
+app_clue_displayng:
+    prefix: /displaying/
+    resource: "displaying.yml"

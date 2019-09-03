@@ -1,0 +1,9 @@
+app_card_type_creation_create_card_type:
+    path: /create_card_type/
+    defaults: { _controller: 'AppBundle:CardType/Creation:createCardType' }
+    options:
+        titles:
+            main: Création d'un type de carte
+        breadcrumb:
+            label: Création type de carte
+            icon: fa fa-layer-group

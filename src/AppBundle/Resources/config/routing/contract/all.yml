@@ -1,0 +1,7 @@
+app_contract_edition:
+    prefix: /edition/
+    resource: 'edition.yml'
+
+app_contract_submitting:
+    prefix: /submitting/
+    resource: 'submitting.yml'
