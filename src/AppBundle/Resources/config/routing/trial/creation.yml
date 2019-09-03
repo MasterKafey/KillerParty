@@ -3,3 +3,10 @@ app_trial_creation_create_trial:
     defaults: { _controller: 'AppBundle:Trial\Creation:createTrial' }
     requirements:
         id: \d+
+    options:
+        titles:
+            main: Création d'un procès
+        breadcrumb:
+            icon: fa fa-plus
+            label: Création procès
+            parent: app_party_listing_list_party

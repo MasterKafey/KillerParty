@@ -41,3 +41,7 @@
   - name: Liste global
     icon: fa fa-list
     route: app_party_listing_list_party
+
+- name: Déconnexion
+  icon: fas fa-sign-out-alt
+  route: app_user_authentication_logout

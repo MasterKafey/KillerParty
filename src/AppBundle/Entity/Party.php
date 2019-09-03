@@ -19,11 +19,6 @@ class Party
     private $name;
 
     /**
-     * @var \DateTime
-     */
-    private $endingDate;
-
-    /**
      * @var CardType[]
      */
     private $cardTypes;
@@ -185,28 +180,5 @@ class Party
         $this->started = $started;
 
         return $this;
-    }
-
-    /**
-     * Set ending date.
-     *
-     * @param \DateTime $endingDate
-     * @return Party
-     */
-    public function setEndingDate($endingDate)
-    {
-        $this->endingDate = $endingDate;
-
-        return $this;
-    }
-
-    /**
-     * Get ending date.
-     *
-     * @return \DateTime
-     */
-    public function getEndingDate()
-    {
-        return $this->endingDate;
     }
 }

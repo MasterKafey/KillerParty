@@ -21,13 +21,11 @@ class ListingController extends Controller
     public function listPersonalPartyAction()
     {
         $players = $this->getDoctrine()->getRepository(Player::class)->findBy(array(
-            'isGameMaster' => true,
             'user' => $this->getUser(),
         ));
         $parties = array();
 
-        foreach($players as $player)
-        {
+        foreach ($players as $player) {
             $parties[] = $player->getParty();
         }
 

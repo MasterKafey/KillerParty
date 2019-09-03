@@ -1,1 +1,45 @@
 {% extends '@Layout/Default/base.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        {% set parties = parties|merge(parties) %}
+        {% set parties = parties|merge(parties) %}
+        {% set parties = parties|merge(parties) %}
+        {% set parties = parties|merge(parties) %}
+        {% for party in parties %}
+            {% set current_player = party_business.userPlayer(party, app.user) %}
+            {% set players = party.players %}
+            {% set dead_player_number = 0 %}
+            {% for player in players %}
+                {% if player_business.playerDead(player) %}
+                    {% set dead_player_number = dead_player_number + 1 %}
+                {% endif %}
+            {% endfor %}
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <a class="info-box bg-{{ current_player.gameMaster ? 'aqua' : 'green' }}" href="{{ path('app_party_showing_show_party', {'id': party.id}) }}">
+                    <span class="info-box-icon"><i class="fa fa-bookmark-o"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">{{ party.name }}</span>
+                        <span class="info-box-number">
+                        {% if not current_player.gameMaster %}
+                            {{ current_player.contracts|length }}
+                        {% else %}
+                            Game Master
+                        {% endif %}
+                        </span>
+
+                        <div class="progress">
+                            <div class="progress-bar"
+                                 style="width: {{ dead_player_number/(players|length - 1) }}%"></div>
+                        </div>
+                        <span class="progress-description">
+                            {{ dead_player_number }} joueur{{ dead_player_number > 1 ? 's' }}
+                            mort{{ dead_player_number > 1 ? 's' }}
+                        </span>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}

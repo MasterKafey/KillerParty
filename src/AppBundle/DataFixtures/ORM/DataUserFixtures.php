@@ -4,7 +4,6 @@ namespace AppBundle\DataFixtures\ORM;
 
 
 use AppBundle\Entity\User;
-use AppBundle\Service\Business\UserBusiness;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;

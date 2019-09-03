@@ -3,3 +3,10 @@ app_party_showing_show_party:
     defaults: { _controller: 'AppBundle:Party/Showing:showParty' }
     requirements:
         id: \d+
+    options:
+        titles:
+            main: Affichage d'une partie
+        breadcrumb:
+            label: Affichage partie
+            icon: fa fa-dice
+            parent: app_party_listing_list_party

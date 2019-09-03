@@ -1,3 +1,10 @@
 app_clue_creation_create_clue:
     path: /create_clue/{id}
     defaults: { _controller: 'AppBundle:Clue\Creation:createClue' }
+    options:
+        titles:
+            main: Créer un indice
+        breadcrumb:
+            icon: fa fa-plus
+            label: Créer indice
+            parent: app_party_listing_list_party

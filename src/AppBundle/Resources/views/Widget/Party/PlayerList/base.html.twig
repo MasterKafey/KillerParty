@@ -4,8 +4,7 @@
     {% block header %}
         <h3>{{ party.name }}
             <small>{{ not party.started ? 'Partie en préparation' : (party_over ? 'Partie terminé' : 'Partie en cours') }}
-                ({{ party.creationDate|date('d/m/y H:i') }}
-                ) {{ party_over ? '- (' ~ party.endingDate|date('d/m/y H:i') ~ ')' }}
+                ({{ party.creationDate|date('d/m/y H:i') }})
             </small>
         </h3>
     {% endblock header %}

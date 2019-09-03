@@ -3,3 +3,10 @@ app_contract_edition_edit_contract:
     defaults: { _controller: 'AppBundle:Contract\Edition:editContract' }
     requirements:
         id: \d+
+    options:
+        titles:
+            main: Modifier un contrat
+        breadcrumb:
+            icon: fa fa-edit
+            label: Modifier contrat
+            parent: app_party_listing_list_party

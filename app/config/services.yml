@@ -28,8 +28,3 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
-
-    AppBundle\Service\Listener\ContractListener:
-        tags:
-        - { name: doctrine.orm.entity_listener, entity: AppBundle\Entity\Contract, event: prePersist }
-        - { name: doctrine.orm.entity_listener, entity: AppBundle\Entity\Contract, event: preUpdate }

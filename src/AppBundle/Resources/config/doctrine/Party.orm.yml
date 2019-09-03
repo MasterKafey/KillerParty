@@ -15,9 +15,6 @@ AppBundle\Entity\Party:
             unique: true
         creationDate:
             type: datetime
-        endingDate:
-            type: datetime
-            nullable: true
         started:
             type: boolean
     manyToMany:

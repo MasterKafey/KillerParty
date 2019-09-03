@@ -3,3 +3,10 @@ app_vote_creation_create_vote:
     defaults: { _controller: 'AppBundle:Vote\Creation:createVote' }
     requirements:
         id: \d+
+    options:
+        titles:
+            main: Voter
+        breadcrumb:
+            icon: fa fa-plus
+            label: Voter
+            parent: app_party_listing_list_party

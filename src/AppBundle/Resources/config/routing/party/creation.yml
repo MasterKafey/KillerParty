@@ -1,3 +1,9 @@
 app_party_creation_create_party:
     path: /create_party/
     defaults: { _controller: 'AppBundle:Party/Creation:createParty' }
+    options:
+        titles:
+            main: Création d'une partie
+        breadcrumb:
+            label: Création partie
+            icon: fa fa-plus

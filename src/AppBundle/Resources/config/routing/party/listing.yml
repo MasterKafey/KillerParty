@@ -1,7 +1,19 @@
 app_party_listing_list_party:
     path: /list_party/
     defaults: { _controller: 'AppBundle:Party/Listing:listParty' }
+    options:
+        titles:
+            main: Liste des parties
+        breadcrumb:
+            label: Liste parties
+            icon: fas fa-list
 
 app_party_listing_list_personal_party:
     path: /list_personal_party/
     defaults: { _controller: 'AppBundle:Party/Listing:listPersonalParty' }
+    options:
+        titles:
+            main: Listes de vos parties
+        breadcrumb:
+            label: Liste parties
+            icon: fa fa-plus
