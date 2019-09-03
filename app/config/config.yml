@@ -46,7 +46,6 @@ twig:
         '%kernel.project_dir%/src/AppBundle/Resources/views/Widget': Widget
     globals:
         nav_bar_business: '@AppBundle\Service\Business\NavBarBusiness'
-        breadcrumb_business: '@AppBundle\Service\Business\BreadcrumbBusiness'
         title_business: '@AppBundle\Service\Business\TitleBusiness'
         console_util: '@AppBundle\Service\Util\Console\Console'
         role_business: '@AppBundle\Service\Business\RoleBusiness'

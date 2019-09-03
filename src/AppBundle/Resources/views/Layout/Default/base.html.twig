@@ -42,8 +42,6 @@
                                     </h1>
                                 {% endif %}
                             {% endblock header_title %}
-                            {% set items = breadcrumb_business.breadcrumb() %}
-                            {% include '@Widget/Breadcrumb/Default/base.html.twig' with {'items': items} %}
                         {% endblock header %}
                     </section>
                     <section class="content">
