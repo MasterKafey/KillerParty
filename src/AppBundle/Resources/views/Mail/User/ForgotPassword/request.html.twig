@@ -31,7 +31,7 @@
             <br/>
             <br/>
             Sinon pour continuer la procédure, cliquez
-            <a href="{{ absolute_url(path('app_user_forgot_password_reset', {'id': user.id, 'tokenPassword': user.tokenPassword})) }}">ici</a>.
+            <a href="{{ absolute_url(path('app_user_forgot_password_reset', {'id': user.id, 'tokenPassword': user.passwordToken})) }}">ici</a>.
         {% endblock body_text %}
         </body>
     {% endblock body_html %}

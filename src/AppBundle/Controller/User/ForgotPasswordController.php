@@ -6,6 +6,7 @@ use AppBundle\Entity\User;
 use AppBundle\Form\Model\User\RequestPasswordModel;
 use AppBundle\Form\Type\User\Defining\DefinePasswordType;
 use AppBundle\Form\Type\User\Requesting\RequestPasswordType;
+use AppBundle\Form\Type\User\Resetting\ResetPasswordType;
 use AppBundle\Service\Business\UserBusiness;
 use AppBundle\Service\Mailer\User\RequestPasswordMailer;
 use AppBundle\Service\Util\Console\Console;
@@ -47,7 +48,7 @@ class ForgotPasswordController extends Controller
             return $this->redirectToRoute('app_user_authentication_authenticate');
         }
 
-        $form = $this->createForm(DefinePasswordType::class, $user);
+        $form = $this->createForm(ResetPasswordType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

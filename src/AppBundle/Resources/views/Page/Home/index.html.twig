@@ -2,10 +2,6 @@
 
 {% block content %}
     <div class="row">
-        {% set parties = parties|merge(parties) %}
-        {% set parties = parties|merge(parties) %}
-        {% set parties = parties|merge(parties) %}
-        {% set parties = parties|merge(parties) %}
         {% for party in parties %}
             {% set current_player = party_business.userPlayer(party, app.user) %}
             {% set players = party.players %}
@@ -31,7 +27,7 @@
 
                         <div class="progress">
                             <div class="progress-bar"
-                                 style="width: {{ dead_player_number/(players|length - 1) }}%"></div>
+                                 style="width: {{ ((dead_player_number/(players|length - 1)) * 100)|round }}%"></div>
                         </div>
                         <span class="progress-description">
                             {{ dead_player_number }} joueur{{ dead_player_number > 1 ? 's' }}
