@@ -76,6 +76,9 @@ class PartyBusiness
 
     public function isPartyOver(Party $party)
     {
+        if(!$party->getStarted()) {
+            return false;
+        }
         $players = $party->getPlayers();
         $playerAlive = 0;
         foreach ($players as $player) {
