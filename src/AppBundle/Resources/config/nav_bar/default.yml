@@ -9,6 +9,7 @@
 
 - name: Cartes
   icon: fa fa-file-invoice
+  roles: [ROLE_ADMIN]
   sub_items:
   - name: Création
     icon: fa fa-plus
@@ -19,6 +20,7 @@
 
 - name: Type de carte
   icon: fa fa-layer-group
+  roles: [ROLE_ADMIN]
   sub_items:
   - name: Création
     icon: fa fa-plus

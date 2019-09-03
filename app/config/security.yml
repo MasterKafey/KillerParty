@@ -41,4 +41,6 @@ security:
     - { path: ^/user/authentication/authenticate/, roles: IS_AUTHENTICATED_ANONYMOUSLY}
     - { path: ^/user/forgot_password/request_password/, roles: IS_AUTHENTICATED_ANONYMOUSLY}
     - { path: ^/user/registration/, roles: IS_AUTHENTICATED_ANONYMOUSLY}
+    - { path: ^/card_type/, roles: ROLE_ADMIN }
+    - { path: ^/killer_card/, roles: ROLE_ADMIN }
     - { path: ^/, roles: ROLE_USER }
