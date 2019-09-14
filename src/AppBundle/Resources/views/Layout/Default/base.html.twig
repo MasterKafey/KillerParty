@@ -9,6 +9,7 @@
                     <title>Killer Party
                         | {% block title %}{{ title_business.titles['main']|default('') }}{% endblock title %}</title>
                 {% endblock title_html %}
+                {% include '@Layout/Default/meta.html.twig' %}
                 {% include '@Layout/Default/stylesheets.html.twig' %}
                 {% include '@Layout/Default/javascripts.html.twig' %}
             {% endblock head %}
